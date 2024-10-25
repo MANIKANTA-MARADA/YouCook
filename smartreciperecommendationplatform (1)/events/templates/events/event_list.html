@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Event List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Upcoming Events</h1>
+
+    <ul>
+        {% for event in events %}
+        <li>
+            <h2><a href="{% url 'event_detail' event.id %}">{{ event.title }}</a></h2>
+            <p><strong>Location:</strong> {{ event.location }}</p>
+            <p><strong>Date:</strong> {{ event.start_time|date:"F j, Y, g:i a" }}</p>
+            <p><strong>Ends:</strong> {{ event.end_time|date:"F j, Y, g:i a" }}</p>
+        </li>
+        <hr/>
+        {% empty %}
+        <li>No upcoming events at the moment. Please check back later.</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

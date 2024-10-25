@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Event</title>
+</head>
+<body>
+    <h1>Add New Event</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Event</button>
+    </form>
+
+    <a href="{% url 'event_list' %}">Back to Event List</a>
+</body>
+</html>
